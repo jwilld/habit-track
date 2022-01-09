@@ -7,6 +7,7 @@ import Card from '../components/Card';
 import PatternForm from '../components/PatternForm';
 import BarChart from '../components/BarChart';
 import { GlobalStateProvider } from '../context/state';
+import ColorPicker from '../components/ColorPicker';
 
 const Home: NextPage = () => {
   return (
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
           <PatternForm />
           <Card />
           <BarChart />
+          <ColorPicker />
         </main>
 
         <footer className={styles.footer}></footer>
