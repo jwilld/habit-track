@@ -19,22 +19,26 @@ const dummyLogObj = [
   {
     title: 'chicken',
     description: 'eating chicken',
-    logTimestamps: [{ date: '6', month: 1, year: 2022, time: '1641529071565', day: '4' }],
+    logTimestamps: [
+      { date: '6', month: 1, year: 2022, hours: '22', minutes: '10', seconds: '5', day: '4' },
+    ],
     color: '#F3F0D7',
   },
   {
     title: 'bacon',
     description: 'eating bacon',
-    logTimestamps: [{ date: '7', month: 1, year: 2022, time: '1641529071565', day: '4' }],
-    color: '#FF7878'
+    logTimestamps: [
+      { date: '7', month: 1, year: 2022, hours: '12', minutes: '3', seconds: '2', day: '4' },
+    ],
+    color: '#FF7878',
   },
   {
     title: 'ranch',
     description: 'eating bacon',
     logTimestamps: [
-      { date: '8', month: 1, year: 2022, time: '1641529071565', day: '4' },
-      { date: '7', month: 1, year: 2022, time: '1641529071565', day: '4' },
-      { date: '7', month: 1, year: 2022, time: '1641529071565', day: '4' },
+      { date: '8', month: 1, year: 2022, hours: '5', minutes: '45', seconds: '12', day: '4' },
+      { date: '7', month: 1, year: 2022, hours: '3', minutes: '21', seconds: '6', day: '4' },
+      { date: '7', month: 1, year: 2022, hours: '17', minutes: '00', seconds: '3', day: '4' },
     ],
     color: '#CEE5D0',
   },
@@ -52,8 +56,20 @@ export const options = {
     },
   },
 };
-const createMonthDayYear = (timestamp: LogTimestamp) => {
+const createMonthDayYear = (timestamp: LogTimestamp):string => {
   return `${timestamp.month}/${timestamp.date}/${timestamp.year} `;
+};
+
+const createHour = (timestamp: LogTimestamp):string => {
+  return `${timestamp.hours}`;
+};
+
+const createMinute = (timestamp: LogTimestamp):string => {
+  return `${timestamp.minutes}`;
+};
+
+const createSecond = (timestamp: LogTimestamp):string => {
+  return `${timestamp.seconds}`;
 };
 
 const createLabelArr = (logObject: LogObject): string[] => {
