@@ -5,10 +5,12 @@ export default function Card() {
     const date = new Date();
     const logObject: LogTimestamp = {
       date: date.getDate().toString(),
-      month: date.getMonth() + 1, 
-      year: date.getFullYear(),
-      time: date.getTime().toString(),
+      month: date.getMonth() + 1,
       day: date.getDay().toString(),
+      year: date.getFullYear(),
+      hours: date.getHours().toString(),
+      minutes: date.getMinutes.toString(),
+      seconds: date.getMinutes.toString(),
     };
     return logObject;
   };

@@ -3,9 +3,9 @@ export interface LogTimestamp {
   month: number;
   day: string;
   year: number;
-  hour: string;
-  minute: string;
-  second: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
 }
 
 export interface LogObject {
