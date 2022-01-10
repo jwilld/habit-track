@@ -56,31 +56,31 @@ export const options = {
     },
   },
 };
-const createMonthDayYear = (timestamp: LogTimestamp):string => {
+const getMonthDayYear = (timestamp: LogTimestamp): string => {
   return `${timestamp.month}/${timestamp.date}/${timestamp.year} `;
 };
 
-const createHour = (timestamp: LogTimestamp):string => {
+const geteHours = (timestamp: LogTimestamp): string => {
   return `${timestamp.hours}`;
 };
 
-const createMinute = (timestamp: LogTimestamp):string => {
+const geteMinutes = (timestamp: LogTimestamp): string => {
   return `${timestamp.minutes}`;
 };
 
-const createSecond = (timestamp: LogTimestamp):string => {
+const getSeconds = (timestamp: LogTimestamp): string => {
   return `${timestamp.seconds}`;
 };
 
 const createLabelArr = (logObject: LogObject): string[] => {
   const labels = Array.from(
-    new Set(logObject.logTimestamps.map((timestamp: LogTimestamp) => createMonthDayYear(timestamp)))
+    new Set(logObject.logTimestamps.map((timestamp: LogTimestamp) => getMonthDayYear(timestamp)))
   );
   return labels;
 };
 const createLabelString = (logObject: LogObject): string => {
   let [label] = Array.from(
-    new Set(logObject.logTimestamps.map((timestamp: LogTimestamp) => createMonthDayYear(timestamp)))
+    new Set(logObject.logTimestamps.map((timestamp: LogTimestamp) => getMonthDayYear(timestamp)))
   );
 
   return label;
@@ -96,7 +96,7 @@ const createBarLabel = (logObject: LogObject): string => {
 const createDataObject = (logObject: LogObject, labels: any): any => {
   // const labels = createLabelArr(logObject);
   const barLabel = createBarLabel(logObject);
-  const dateArr = logObject.logTimestamps.map((timestamp: any) => createMonthDayYear(timestamp));
+  const dateArr = logObject.logTimestamps.map((timestamp: any) => getMonthDayYear(timestamp));
 
   const dataObject = {
     label: barLabel,
