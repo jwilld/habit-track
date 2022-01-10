@@ -3,11 +3,14 @@ export interface LogTimestamp {
   month: number;
   day: string;
   year: number;
-  time: string;
+  hour: string;
+  minute: string;
+  second: string;
 }
 
 export interface LogObject {
   title: string;
   description: string;
   logTimestamps: LogTimestamp[];
+  color?: string;
 }

@@ -20,11 +20,13 @@ const dummyLogObj = [
     title: 'chicken',
     description: 'eating chicken',
     logTimestamps: [{ date: '6', month: 1, year: 2022, time: '1641529071565', day: '4' }],
+    color: '#F3F0D7',
   },
   {
     title: 'bacon',
     description: 'eating bacon',
     logTimestamps: [{ date: '7', month: 1, year: 2022, time: '1641529071565', day: '4' }],
+    color: '#FF7878'
   },
   {
     title: 'ranch',
@@ -34,6 +36,7 @@ const dummyLogObj = [
       { date: '7', month: 1, year: 2022, time: '1641529071565', day: '4' },
       { date: '7', month: 1, year: 2022, time: '1641529071565', day: '4' },
     ],
+    color: '#CEE5D0',
   },
 ];
 
@@ -89,7 +92,7 @@ const createDataObject = (logObject: LogObject, labels: any): any => {
       return count;
     }),
 
-    backgroundColor: '#97BFB4',
+    backgroundColor: logObject.color,
   };
   return dataObject;
 };
