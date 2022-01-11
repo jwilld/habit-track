@@ -9,8 +9,8 @@ export default function Card() {
       day: date.getDay().toString(),
       year: date.getFullYear(),
       hours: date.getHours().toString(),
-      minutes: date.getMinutes.toString(),
-      seconds: date.getMinutes.toString(),
+      minutes: date.getMinutes().toString(),
+      seconds: date.getSeconds().toString(),
     };
     return logObject;
   };
