@@ -19,8 +19,9 @@ const Home: NextPage = () => {
         </Head>
         <main className={styles.main}>
           <h1 className={styles.app_title}> Habit Track</h1>
+          <PatternForm />
           <Card />
-          <SearchInput addon="#" placeholder='Search habits' />
+          <SearchInput addon="#" placeholder="Search habits" />
         </main>
 
         <footer className={styles.footer}></footer>

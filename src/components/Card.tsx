@@ -16,12 +16,18 @@ export default function Card() {
   };
   const { actionLoggers, setActionLoggers } = useLoggers();
   return actionLoggers.map((logger: any, i: number) => (
-    <div key={i} className="card" style={{ width: '18rem' }}>
-      <div className="card-body">
-        <h5 className="card-title">{logger.title}</h5>
-        <p className="card-text">{logger.description}</p>
-        <div className="d-grid">
+    <div key={i} className="card" style={{ minWidth: '400px', flexGrow: '0', border: 'none' }}>
+      <div
+        className="card-body"
+        style={{ display: 'flex', justifyContent: 'space-between', flexBasis: '100px' }}
+      >
+        <div>
+          <h5 className="card-title">{logger.title}</h5>
+          <p className="card-text">{logger.description}</p>
+        </div>
+        <div className="d-grid" style={{ alignSelf: 'stretch', display: 'flex' }}>
           <a
+            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
             href="#"
             className="btn btn-primary"
             onClick={(event) => {
