@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Card from '../components/Card';
 import PatternForm from '../components/PatternForm';
 import BarChart from '../components/BarChart';
+import SearchInput from '../components/SearchInput';
 import { GlobalStateProvider } from '../context/state';
 
 const Home: NextPage = () => {
@@ -17,10 +18,9 @@ const Home: NextPage = () => {
           <meta name="description" content="An app to track habits." />
         </Head>
         <main className={styles.main}>
-          <h1 className={styles.title}> Habit Track</h1>
-          <PatternForm />
+          <h1 className={styles.app_title}> Habit Track</h1>
           <Card />
-          <BarChart />
+          <SearchInput addon="#" placeholder='Search habits' />
         </main>
 
         <footer className={styles.footer}></footer>

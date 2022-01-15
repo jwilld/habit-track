@@ -2,9 +2,9 @@
   "name": "pattern-tracker",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000 -H 192.168.1.157",
     "build": "next build",
-    "start": "next start",
+    "start": "next start ",
     "lint": "next lint"
   },
   "dependencies": {

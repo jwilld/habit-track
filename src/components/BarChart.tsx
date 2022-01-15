@@ -127,7 +127,7 @@ const mapTime = (logObjects: LogObject[], selector: string) => {
   return removeArrayDuplicates(
     logObjects
       .map((lo: LogObject) => {
-        return lo.logTimestamps.map((timestamp: any) => getHours(timestamp));
+        return lo.logTimestamps.map((timestamp: any) => getMonthDayYear(timestamp));
       })
       .flat()
   );
@@ -135,13 +135,13 @@ const mapTime = (logObjects: LogObject[], selector: string) => {
 
 const createLabelArr = (logObject: LogObject): string[] => {
   const labels = removeArrayDuplicates(
-    logObject.logTimestamps.map((timestamp: LogTimestamp) => getSeconds(timestamp))
+    logObject.logTimestamps.map((timestamp: LogTimestamp) => getMonthDayYear(timestamp))
   );
   return labels;
 };
 const createLabelString = (logObject: LogObject): string => {
   let [label] = removeArrayDuplicates(
-    logObject.logTimestamps.map((timestamp: LogTimestamp) => getSeconds(timestamp))
+    logObject.logTimestamps.map((timestamp: LogTimestamp) => getMonthDayYear(timestamp))
   );
 
   return label;
@@ -157,7 +157,7 @@ const createBarLabel = (logObject: LogObject): string => {
 const createDataObject = (logObject: LogObject, labels: any): any => {
   // const labels = createLabelArr(logObject);
   const barLabel = createBarLabel(logObject);
-  const dateArr = logObject.logTimestamps.map((timestamp: any) => getHours(timestamp));
+  const dateArr = logObject.logTimestamps.map((timestamp: any) => getMonthDayYear(timestamp));
 
   const dataObject = {
     label: barLabel,
@@ -175,7 +175,7 @@ const createDataObject = (logObject: LogObject, labels: any): any => {
 };
 
 const createDataObjects = (logObject: LogObject[]): any => {
-  const labels = mapTime(dummyLogObj, 'hours');
+  const labels = mapTime(logObject, 'date');
   const dataObjects = logObject.map((obj) => createDataObject(obj, labels));
   return dataObjects;
 };
@@ -183,18 +183,19 @@ const createDataObjects = (logObject: LogObject[]): any => {
 export default function BarChart() {
   const { actionLoggers, setActionLoggers } = useLoggers();
   const dataDummy = {
-    labels: mapTime(dummyLogObj, 'hours'),
+    labels: mapTime(dummyLogObj, 'date'),
     datasets: createDataObjects(dummyLogObj),
   };
-  console.log(mapTime(dummyLogObj, 'hours'));
-  console.log(dataDummy);
+  // console.log(mapTime(dummyLogObj, 'seconds'));
+  // console.log(dataDummy);
 
   const logObjEmpty = JSON.stringify(actionLoggers) === '[]';
   const data: any = logObjEmpty
     ? dataDummy
     : {
+        labels: mapTime(actionLoggers, `date`),
         datasets: createDataObjects(actionLoggers),
-        labels: createLabelStrings(actionLoggers),
       };
+  console.log(data);
   return <Bar options={options} data={data} />;
 }
