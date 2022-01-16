@@ -1,5 +1,6 @@
 import { useLoggers } from '../context/state';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
+
 export default function Card() {
   const createLogTimestamp = (): LogTimestamp => {
     const date = new Date();
@@ -24,6 +25,7 @@ export default function Card() {
         <div>
           <h5 className="card-title">{logger.title}</h5>
           <p className="card-text">{logger.description}</p>
+          <span style={{fontWeight:'bold',color:'rgb(13, 110, 253)'}}>View Logs</span>
         </div>
         <div className="d-grid" style={{ alignSelf: 'stretch', display: 'flex' }}>
           <a
