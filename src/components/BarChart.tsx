@@ -106,7 +106,7 @@ const removeArrayDuplicates = (array: any[]) => {
   return Array.from(new Set(array));
 };
 
-const getMonthDayYear = (timestamp: LogTimestamp): string => {
+export const getMonthDayYear = (timestamp: LogTimestamp): string => {
   return `${timestamp.month}/${timestamp.date}/${timestamp.year} `;
 };
 

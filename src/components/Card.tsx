@@ -1,5 +1,7 @@
 import { useLoggers } from '../context/state';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
+import List from './List';
+import { getMonthDayYear } from './BarChart';
 
 export default function Card() {
   const createLogTimestamp = (): LogTimestamp => {
@@ -16,7 +18,7 @@ export default function Card() {
     return logObject;
   };
   const { actionLoggers, setActionLoggers } = useLoggers();
-  return actionLoggers.map((logger: any, i: number) => (
+  return actionLoggers.map((logger: LogObject, i: number) => (
     <div key={i} className="card" style={{ minWidth: '400px', flexGrow: '0', border: 'none' }}>
       <div
         className="card-body"
@@ -48,6 +50,7 @@ export default function Card() {
           </button>
         </div>
       </div>
+      <List items={logger.logTimestamps.map((timestamp) => getMonthDayYear(timestamp))} />
     </div>
   ));
 }
