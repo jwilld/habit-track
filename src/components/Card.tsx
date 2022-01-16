@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useLoggers } from '../context/state';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
 import List from './List';
 import { getMonthDayYear } from './BarChart';
 
 export default function Card() {
+  const [showLogs, setShowLogs] = useState<string | null>('');
   const createLogTimestamp = (): LogTimestamp => {
     const date = new Date();
     const logObject: LogTimestamp = {
@@ -27,7 +29,15 @@ export default function Card() {
         <div>
           <h5 className="card-title">{logger.title}</h5>
           <p className="card-text">{logger.description}</p>
-          <button className="btn btn-outline-primary">View Logs</button>
+          <button
+            title={logger.title}
+            className="btn btn-outline-primary"
+            onClick={() => {
+              showLogs === logger.title ? setShowLogs(null) : setShowLogs(logger.title);
+            }}
+          >
+            {showLogs === logger.title ? 'Hide Logs' : 'Show Logs'}
+          </button>
         </div>
         <div className="d-grid" style={{ alignSelf: 'stretch', display: 'flex' }}>
           <button
@@ -50,7 +60,9 @@ export default function Card() {
           </button>
         </div>
       </div>
-      <List items={logger.logTimestamps.map((timestamp) => getMonthDayYear(timestamp))} />
+      {showLogs === logger.title ? (
+        <List items={logger.logTimestamps.map((timestamp) => getMonthDayYear(timestamp))} />
+      ) : null}
     </div>
   ));
 }
