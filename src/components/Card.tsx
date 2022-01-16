@@ -25,12 +25,11 @@ export default function Card() {
         <div>
           <h5 className="card-title">{logger.title}</h5>
           <p className="card-text">{logger.description}</p>
-          <span style={{fontWeight:'bold',color:'rgb(13, 110, 253)'}}>View Logs</span>
+          <button className="btn btn-outline-primary">View Logs</button>
         </div>
         <div className="d-grid" style={{ alignSelf: 'stretch', display: 'flex' }}>
-          <a
+          <button
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-            href="#"
             className="btn btn-primary"
             onClick={(event) => {
               event.preventDefault();
@@ -46,7 +45,7 @@ export default function Card() {
             }}
           >
             LOG
-          </a>
+          </button>
         </div>
       </div>
     </div>
