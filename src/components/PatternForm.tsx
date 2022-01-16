@@ -15,8 +15,13 @@ export default function PatternForm() {
   };
 
   return (
-    <section>
-      <div className="input-group mb-3">
+    <section style={{ display: 'flex', alignItems: 'center' }}>
+      <div className="input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text" id="">
+            Logger
+          </span>
+        </div>
         <input
           id="create-logger-title"
           onChange={(e) => {
@@ -24,13 +29,12 @@ export default function PatternForm() {
           }}
           type="text"
           className="form-control"
-          placeholder="Title, i.e., snacking, smoking..."
+          placeholder="Title"
           aria-label="Pattern"
           aria-describedby="basic-addon1"
         />
-      </div>
-      <div className="input-group">
-        <textarea
+        <input
+          style={{ flexGrow: '2' }}
           onChange={(e) => {
             setDescription(e.target.value);
           }}
@@ -38,10 +42,11 @@ export default function PatternForm() {
           placeholder="Description"
           className="form-control"
           aria-label="Description"
-        ></textarea>
+        ></input>
       </div>
-      <ul className="list-group"></ul>
       <button
+      title='add logger'
+        style={{ marginLeft: '1rem' }}
         onClick={() => {
           setActionLoggers([
             ...actionLoggers,
@@ -56,7 +61,7 @@ export default function PatternForm() {
         type="button"
         className="btn btn-primary"
       >
-        Create Tracker
+        +
       </button>
     </section>
   );
