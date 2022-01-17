@@ -19,11 +19,11 @@ const Home: NextPage = () => {
         </Head>
         <main className={styles.main}>
           <h1 className={styles.app_title}> Habit Track</h1>
-          <div style={{ overflow: 'scroll', height:'400px' }}>
+          <div style={{ overflowY: 'scroll', height: '400px' }}>
             <Card />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <SearchInput addon="#" placeholder="Search loggers" />
+            <SearchInput addon="🔎" placeholder="Search loggers" />
             <PatternForm />
           </div>
         </main>
