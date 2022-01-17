@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLoggers } from '../context/state';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
 import List from './List';
-import { getMonthDayYear } from './BarChart';
+import { getHourMinuteSecond, getMonthDayYear } from './BarChart';
 
 export default function Card() {
   const [showLogs, setShowLogs] = useState<string | null>('');
@@ -51,8 +51,8 @@ export default function Card() {
               const updatedLogger: LogObject = logger;
               updatedLogger.logTimestamps.push(createLogTimestamp());
               let updatedActionLoggers = actionLoggers;
-              updatedActionLoggers.splice(index, 1);
-              setActionLoggers([...updatedActionLoggers, updatedLogger]);
+              updatedActionLoggers[index] = updatedLogger;
+              setActionLoggers([...updatedActionLoggers]);
               console.log(actionLoggers);
             }}
           >
@@ -61,7 +61,11 @@ export default function Card() {
         </div>
       </div>
       {showLogs === logger.title ? (
-        <List items={logger.logTimestamps.map((timestamp) => getMonthDayYear(timestamp))} />
+        <List
+          items={logger.logTimestamps.map(
+            (timestamp) => `${getMonthDayYear(timestamp)} ${getHourMinuteSecond(timestamp)}`
+          )}
+        />
       ) : null}
     </div>
   ));

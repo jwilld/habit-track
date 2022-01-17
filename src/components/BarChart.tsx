@@ -118,7 +118,11 @@ const getSeconds = (timestamp: LogTimestamp): string => {
   return `${timestamp.seconds}`;
 };
 const getHours = (timestamp: LogTimestamp): string => {
-  return `${timestamp.hours}:00`;
+  return `${timestamp.hours}`;
+};
+
+export const getHourMinuteSecond = (timestamp: LogTimestamp): string => {
+  return `${timestamp.hours}:${timestamp.minutes}:${timestamp.seconds}`;
 };
 
 // stopping here
