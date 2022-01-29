@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLoggers } from '../context/state';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
 import List from './List';
-import { getHourMinuteSecond, getMonthDayYear } from './BarChart';
+import { getHourMinuteSecond, getMonthDayYear, dateToUSEST } from './BarChart';
 
 export default function Card() {
   const [showLogs, setShowLogs] = useState<string | null>('');
@@ -62,8 +62,8 @@ export default function Card() {
       </div>
       {showLogs === logger.title ? (
         <List
-          items={logger.logTimestamps.map(
-            (timestamp) => `${getMonthDayYear(timestamp)} ${getHourMinuteSecond(timestamp)}`
+          items={logger.logTimestamps.map((timestamp) =>
+            dateToUSEST(`${getMonthDayYear(timestamp)} ${getHourMinuteSecond(timestamp)}`)
           )}
         />
       ) : null}

@@ -19,6 +19,7 @@ const Home: NextPage = () => {
         </Head>
         <main className={styles.main}>
           <h1 className={styles.app_title}> Habit Track</h1>
+          <BarChart/>
           <div style={{ overflowY: 'scroll', height: '400px' }}>
             <Card />
           </div>

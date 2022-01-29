@@ -8,11 +8,13 @@ import {
   Title,
   Tooltip,
   Legend,
+  CoreChartOptions,
 } from 'chart.js';
 
 import { LogObject, LogTimestamp } from '../interfaces/interfaces';
 
 import { Bar } from 'react-chartjs-2';
+import { _DeepPartialObject } from 'chart.js/types/utils';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const dummyLogObj = [
@@ -123,6 +125,17 @@ const getHours = (timestamp: LogTimestamp): string => {
 
 export const getHourMinuteSecond = (timestamp: LogTimestamp): string => {
   return `${timestamp.hours}:${timestamp.minutes}:${timestamp.seconds}`;
+};
+
+export const dateToUSEST = (date: string): string => {
+  return new Date(date).toLocaleString('en-US', {
+    month: 'numeric',
+    day: 'numeric',
+    year: '2-digit',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  });
 };
 
 // stopping here
