@@ -2,6 +2,7 @@ import { Modal } from 'react-bootstrap';
 import List from './List';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
 import BarChart, { getHourMinuteSecond, getMonthDayYear, dateToUSEST } from './BarChart';
+import DatePicker from './DatePicker';
 
 interface LogModalProps {
   show: boolean;
@@ -24,6 +25,7 @@ export default function LogModal(props: LogModalProps) {
           <Modal.Title>{props.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <DatePicker />
           <BarChart />
           <List
             items={props.timestamps.map((timestamp) =>
