@@ -8,7 +8,7 @@ interface LogModalProps {
   show: boolean;
   close: Function;
   title: string;
-  timestamps: LogTimestamp[];
+  logObject: LogObject;
 }
 
 export default function LogModal(props: LogModalProps) {
@@ -26,9 +26,9 @@ export default function LogModal(props: LogModalProps) {
         </Modal.Header>
         <Modal.Body>
           <DatePicker />
-          <BarChart />
+          <BarChart title={props.title} logObject={props.logObject} date="02/19/2022" />
           <List
-            items={props.timestamps.map((timestamp) =>
+            items={props.logObject.logTimestamps.map((timestamp) =>
               dateToUSEST(`${getMonthDayYear(timestamp)} ${getHourMinuteSecond(timestamp)}`)
             )}
           />

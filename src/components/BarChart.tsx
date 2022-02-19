@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
   CoreChartOptions,
+  PluginChartOptions,
 } from 'chart.js';
 
 import { LogObject, LogTimestamp } from '../interfaces/interfaces';
@@ -92,18 +93,6 @@ const dummyLogObj = [
   },
 ];
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'example chart',
-    },
-  },
-};
 const removeArrayDuplicates = (array: any[]) => {
   return Array.from(new Set(array));
 };
@@ -197,22 +186,38 @@ const createDataObjects = (logObject: LogObject[]): any => {
   return dataObjects;
 };
 
-export default function BarChart() {
+interface BarChartProps {
+  title: string;
+  logObject: LogObject;
+  date: string;
+}
+
+export default function BarChart(props: BarChartProps) {
   const { actionLoggers, setActionLoggers } = useLoggers();
   const dataDummy = {
     labels: mapTime(dummyLogObj, 'date'),
     datasets: createDataObjects(dummyLogObj),
   };
-  // console.log(mapTime(dummyLogObj, 'seconds'));
-  // console.log(dataDummy);
 
   const logObjEmpty = JSON.stringify(actionLoggers) === '[]';
   const data: any = logObjEmpty
     ? dataDummy
     : {
-        labels: mapTime(actionLoggers, `date`),
-        datasets: createDataObjects(actionLoggers),
+        labels: mapTime([props.logObject], `date`),
+        datasets: createDataObjects([props.logObject]),
       };
-  console.log(data);
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: [props.title, props.date],
+      },
+    },
+  };
+  // set chart title to current selected logger
   return <Bar options={options} data={data} />;
 }

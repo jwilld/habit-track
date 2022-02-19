@@ -21,15 +21,16 @@ export default function Card() {
     return logObject;
   };
   const { actionLoggers, setActionLoggers } = useLoggers();
+
   return actionLoggers.map((logger: LogObject, i: number) => (
     <div key={i} className="card" style={{ minWidth: '400px', flexGrow: '0', border: 'none' }}>
       <LogModal
-        show={typeof showLogs === 'string'}
+        show={showLogs === logger.title}
         close={() => {
           setShowLogs(null);
         }}
         title={`${logger.title} Logs`}
-        timestamps={logger.logTimestamps}
+        logObject={logger}
       />
       <div
         className="card-body"
