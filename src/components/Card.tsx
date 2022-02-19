@@ -3,9 +3,10 @@ import { useLoggers } from '../context/state';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
 import List from './List';
 import { getHourMinuteSecond, getMonthDayYear, dateToUSEST } from './BarChart';
+import LogModal from './LogModal';
 
 export default function Card() {
-  const [showLogs, setShowLogs] = useState<string | null>('');
+  const [showLogs, setShowLogs] = useState<string | null>();
   const createLogTimestamp = (): LogTimestamp => {
     const date = new Date();
     const logObject: LogTimestamp = {
@@ -22,6 +23,14 @@ export default function Card() {
   const { actionLoggers, setActionLoggers } = useLoggers();
   return actionLoggers.map((logger: LogObject, i: number) => (
     <div key={i} className="card" style={{ minWidth: '400px', flexGrow: '0', border: 'none' }}>
+      <LogModal
+        show={typeof showLogs === 'string'}
+        close={() => {
+          setShowLogs(null);
+        }}
+        title={`${logger.title} Logs`}
+        timestamps={logger.logTimestamps}
+      />
       <div
         className="card-body"
         style={{ display: 'flex', justifyContent: 'space-between', flexBasis: '100px' }}
