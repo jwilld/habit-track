@@ -30,6 +30,8 @@ const monthOptions = months.map((month: string, i: number) => {
   return <option key={i}>{month}</option>;
 });
 
+const currentDate = new Date().toISOString().split('T')[0];
+
 export default function DatePicker() {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [month, setMonth] = useState<string>(months[new Date().getMonth()]);
@@ -45,7 +47,7 @@ export default function DatePicker() {
         name="trip-start"
         value={date}
         min="2018-01-01"
-        max="2018-12-31"
+        max={currentDate}
         onChange={(event: BaseSyntheticEvent) => {
           console.log(event.target?.valueAsDate);
         }}
