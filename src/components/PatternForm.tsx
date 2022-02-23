@@ -45,13 +45,16 @@ export default function PatternForm() {
         ></input>
       </div>
       <button
-      title='add logger'
+        title="add logger"
         style={{ marginLeft: '1rem' }}
         onClick={() => {
           setActionLoggers([
             ...actionLoggers,
             { title: title, description: description, logTimestamps: [] } as LogObject,
           ]);
+          // reset title and description
+          setDescription('');
+          setTitle('');
           console.log(actionLoggers);
           const loggerIDs = ['create-logger-title', 'create-logger-description'];
           for (const logger of loggerIDs) {

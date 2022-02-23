@@ -214,7 +214,7 @@ export default function BarChart(props: BarChartProps) {
       },
       title: {
         display: true,
-        text: [props.title, activeDateType === 'date' ? date : month  ],
+        text: [props.title, activeDateType === 'date' ? date ?? '' : month ?? ''  ],
       },
     },
   };
