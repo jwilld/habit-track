@@ -41,7 +41,14 @@ export default function DatePicker() {
   const [month, setMonth] = useState<string>(months[new Date().getMonth()]);
   return (
     <div style={{ display: 'flex' }}>
-      <select value={month} className="form-select" aria-label="Default select example">
+      <select
+        onChange={(event: BaseSyntheticEvent) => {
+          setMonth(event.target.value);
+        }}
+        value={month}
+        className="form-select"
+        aria-label="Default select example"
+      >
         {monthOptions}
       </select>
       <input
