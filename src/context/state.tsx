@@ -6,9 +6,19 @@ export function GlobalStateProvider({ children }: any) {
   const [actionLoggers, setActionLoggers] = useState([]);
   const [date, setDate] = useState<string>();
   const [month, setMonth] = useState<string>();
+  const [activeDateType, setActiveDateType] = useState<string>();
   return (
     <AppContext.Provider
-      value={{ actionLoggers, setActionLoggers, date, setDate, month, setMonth }}
+      value={{
+        actionLoggers,
+        setActionLoggers,
+        date,
+        setDate,
+        month,
+        setMonth,
+        activeDateType,
+        setActiveDateType,
+      }}
     >
       {children}
     </AppContext.Provider>

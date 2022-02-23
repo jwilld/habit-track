@@ -39,8 +39,8 @@ const dateToMonthDayYear = (date: Date) => {
 const currentDate = dateToMonthDayYear(new Date());
 
 export default function DatePicker() {
-  const { date, setDate } = useLoggers();
-  const { month, setMonth } = useLoggers();
+  const { date, setDate, month, setMonth, setActiveDateType } = useLoggers();
+
   // const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   // const [month, setMonth] = useState<string>();
 
@@ -49,11 +49,12 @@ export default function DatePicker() {
       <select
         onChange={(event: BaseSyntheticEvent) => {
           setMonth(event.target.value);
+          setActiveDateType('month');
         }}
         value={month}
         className="form-select"
         aria-label="Default select example"
-      >
+        >
         {monthOptions}
       </select>
       <input
@@ -67,6 +68,7 @@ export default function DatePicker() {
         max={currentDate}
         onChange={(event: BaseSyntheticEvent) => {
           setDate(dateToMonthDayYear(new Date(event.target?.valueAsDate)));
+          setActiveDateType('date');
         }}
       ></input>
     </div>
