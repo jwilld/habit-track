@@ -32,9 +32,10 @@ const monthOptions = months.map((month: string, i: number) => {
 
 export default function DatePicker() {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [month, setMonth] = useState<string>(months[new Date().getMonth()]);
   return (
     <div style={{ display: 'flex' }}>
-      <select className="form-select" aria-label="Default select example">
+      <select value={month} className="form-select" aria-label="Default select example">
         {monthOptions}
       </select>
       <input
