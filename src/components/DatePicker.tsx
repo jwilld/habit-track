@@ -30,7 +30,11 @@ const monthOptions = months.map((month: string, i: number) => {
   return <option key={i}>{month}</option>;
 });
 
-const currentDate = new Date().toISOString().split('T')[0];
+const dateToMonthDayYear = (date: Date) => {
+  return date.toISOString().split('T')[0];
+};
+
+const currentDate = dateToMonthDayYear(new Date());
 
 export default function DatePicker() {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
@@ -46,10 +50,11 @@ export default function DatePicker() {
         id="start"
         name="trip-start"
         value={date}
+        // probably set it to when the user creates the account
         min="2018-01-01"
         max={currentDate}
         onChange={(event: BaseSyntheticEvent) => {
-          console.log(event.target?.valueAsDate);
+          setDate(dateToMonthDayYear(new Date(event.target?.valueAsDate)));
         }}
       ></input>
     </div>
