@@ -5,6 +5,7 @@ import {
   DetailedHTMLProps,
   InputHTMLAttributes,
   BaseSyntheticEvent,
+  useState,
 } from 'react';
 import { setDatasets } from 'react-chartjs-2/dist/utils';
 
@@ -30,6 +31,7 @@ const monthOptions = months.map((month: string, i: number) => {
 });
 
 export default function DatePicker() {
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   return (
     <div style={{ display: 'flex' }}>
       <select className="form-select" aria-label="Default select example">
@@ -40,7 +42,7 @@ export default function DatePicker() {
         type="date"
         id="start"
         name="trip-start"
-        value=""
+        value={date}
         min="2018-01-01"
         max="2018-12-31"
         onChange={(event: BaseSyntheticEvent) => {
