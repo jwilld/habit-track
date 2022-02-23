@@ -46,7 +46,7 @@ export default function Card() {
               showLogs === logger.title ? setShowLogs(null) : setShowLogs(logger.title);
             }}
           >
-            {showLogs === logger.title ? 'Hide Logs' : 'Show Logs'}
+            Show Logs
           </button>
         </div>
         <div className="d-grid" style={{ alignSelf: 'stretch', display: 'flex' }}>
@@ -70,13 +70,6 @@ export default function Card() {
           </button>
         </div>
       </div>
-      {showLogs === logger.title ? (
-        <List
-          items={logger.logTimestamps.map((timestamp) =>
-            dateToUSEST(`${getMonthDayYear(timestamp)} ${getHourMinuteSecond(timestamp)}`)
-          )}
-        />
-      ) : null}
     </div>
   ));
 }

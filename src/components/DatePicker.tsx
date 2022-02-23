@@ -1,3 +1,13 @@
+import {
+  SetStateAction,
+  Dispatch,
+  ChangeEventHandler,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  BaseSyntheticEvent,
+} from 'react';
+import { setDatasets } from 'react-chartjs-2/dist/utils';
+
 const months = [
   'January',
   'February',
@@ -30,9 +40,12 @@ export default function DatePicker() {
         type="date"
         id="start"
         name="trip-start"
-        value="2018-07-22"
+        value=""
         min="2018-01-01"
         max="2018-12-31"
+        onChange={(event: BaseSyntheticEvent) => {
+          console.log(event.target?.valueAsDate);
+        }}
       ></input>
     </div>
   );

@@ -3,6 +3,7 @@ import List from './List';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
 import BarChart, { getHourMinuteSecond, getMonthDayYear, dateToUSEST } from './BarChart';
 import DatePicker from './DatePicker';
+import { useEffect, useState } from 'react';
 
 interface LogModalProps {
   show: boolean;
