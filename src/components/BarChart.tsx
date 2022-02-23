@@ -193,7 +193,7 @@ interface BarChartProps {
 }
 
 export default function BarChart(props: BarChartProps) {
-  const { actionLoggers, setActionLoggers } = useLoggers();
+  const { actionLoggers, setActionLoggers, date, month } = useLoggers();
   const dataDummy = {
     labels: mapTime(dummyLogObj, 'date'),
     datasets: createDataObjects(dummyLogObj),
@@ -214,7 +214,7 @@ export default function BarChart(props: BarChartProps) {
       },
       title: {
         display: true,
-        text: [props.title, props.date],
+        text: [props.title, date],
       },
     },
   };
