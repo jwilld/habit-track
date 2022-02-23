@@ -1,3 +1,4 @@
+import { useLoggers } from '../context/state';
 import {
   SetStateAction,
   Dispatch,
@@ -6,6 +7,7 @@ import {
   InputHTMLAttributes,
   BaseSyntheticEvent,
   useState,
+  useEffect,
 } from 'react';
 import { setDatasets } from 'react-chartjs-2/dist/utils';
 
@@ -37,8 +39,11 @@ const dateToMonthDayYear = (date: Date) => {
 const currentDate = dateToMonthDayYear(new Date());
 
 export default function DatePicker() {
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
-  const [month, setMonth] = useState<string>(months[new Date().getMonth()]);
+  const { date, setDate } = useLoggers();
+  const { month, setMonth } = useLoggers();
+  // const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  // const [month, setMonth] = useState<string>();
+
   return (
     <div style={{ display: 'flex' }}>
       <select

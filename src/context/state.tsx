@@ -4,8 +4,12 @@ export const AppContext = createContext<any>(undefined);
 
 export function GlobalStateProvider({ children }: any) {
   const [actionLoggers, setActionLoggers] = useState([]);
+  const [date, setDate] = useState<string>();
+  const [month, setMonth] = useState<string>();
   return (
-    <AppContext.Provider value={{ actionLoggers, setActionLoggers }}>
+    <AppContext.Provider
+      value={{ actionLoggers, setActionLoggers, date, setDate, month, setMonth }}
+    >
       {children}
     </AppContext.Provider>
   );
