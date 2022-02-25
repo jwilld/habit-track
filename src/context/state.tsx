@@ -4,9 +4,9 @@ export const AppContext = createContext<any>(undefined);
 
 export function GlobalStateProvider({ children }: any) {
   const [actionLoggers, setActionLoggers] = useState([]);
-  const [date, setDate] = useState<string>();
-  const [month, setMonth] = useState<string>();
-  const [activeDateType, setActiveDateType] = useState<string>();
+  const [date, setDate] = useState<string>('');
+  const [month, setMonth] = useState<string>('');
+  const [activeDateType, setActiveDateType] = useState<string>('');
   return (
     <AppContext.Provider
       value={{

@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useLoggers } from '../context/state';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
-import List from './List';
-import { getHourMinuteSecond, getMonthDayYear, dateToUSEST } from './BarChart';
 import LogModal from './LogModal';
 
 export default function Card() {
@@ -56,7 +54,7 @@ export default function Card() {
             onClick={(event) => {
               event.preventDefault();
               const index = actionLoggers.findIndex(
-                (currentLogger: any) => currentLogger.title === logger.title
+                (currentLogger: LogObject) => currentLogger.title === logger.title
               );
               const updatedLogger: LogObject = logger;
               updatedLogger.logTimestamps.push(createLogTimestamp());

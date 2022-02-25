@@ -1,7 +1,8 @@
 import { Modal } from 'react-bootstrap';
 import List from './List';
 import { LogTimestamp, LogObject } from '../interfaces/interfaces';
-import BarChart, { getHourMinuteSecond, getMonthDayYear, dateToUSEST } from './BarChart';
+import { getHourMinuteSecond, getMonthDayYear, dateToUSEST } from '../utils/dates';
+import BarChart from './BarChart';
 import DatePicker from './DatePicker';
 import { useEffect, useState } from 'react';
 
